@@ -9,8 +9,8 @@ import edu.grinnell.csc207.util.SearchUtils;
 /**
  * Assorted experiments for searching structures.
  *
- * @author Your Name Here
- * @author Your Name Here
+ * @author Maral
+ * @author Alyssa
  * @author Samuel A. Rebelsky (starter code)
  */
 public class SearchExperiments {
@@ -49,6 +49,14 @@ public class SearchExperiments {
     } catch (Exception e) {
       pen.println("There are no strings that contain the letter u.");
     } // try/catch
-    pen.close();
+
+    int ArrayInt[] = new int[1000];
+
+  for (int i = 0; i < 1000; i++) {
+      ArrayInt[i] = i;
+  }
+  int index = SearchUtils.binarySearch(ArrayInt, 999);
+  pen.println("the index is found at " + index+"  and counter is " + SearchUtils.countR);
+  pen.close();
   } // main(String[])
 } // class SearchUtils

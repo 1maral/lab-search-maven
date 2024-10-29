@@ -10,6 +10,8 @@ import java.util.function.Predicate;
  * @author Samuel A. Rebelsky (starter code)
  */
 public class SearchUtils {
+  public static int countIt = 0;
+  public static int countR = 0;
   // +---------+-----------------------------------------------------
   // | Helpers |
   // +---------+
@@ -32,7 +34,24 @@ public class SearchUtils {
    *   values[index] == val
    */
   static int iterativeBinarySearch(int[] vals, int val) throws Exception {
-    return 0;   // STUB
+    int lb = 0;
+    int ub = vals.length-1;
+    int midpoint;
+    while (lb<ub && lb != ub) {
+      countIt++;
+      midpoint = (ub-lb)/2 + lb;
+      if(vals[midpoint] == val){
+        return midpoint;
+      } else if (vals[midpoint] < val) {
+        lb = midpoint + 1;
+      } else {
+        ub = midpoint - 1;
+      } // else/if
+    }
+    if(lb == ub && vals[lb] == val){
+      return lb;
+    }
+    throw new Exception();
   } // iterativeBinarySearch
 
   /**
@@ -57,6 +76,7 @@ public class SearchUtils {
   } // recursiveBinarySearch
 
   static int recursiveHelper(int[] vals, int val, int lb, int ub) throws Exception {
+    countR++;
     int midpoint = (ub - lb)/2;
     midpoint += lb;
     if (lb > ub){
@@ -145,7 +165,7 @@ public class SearchUtils {
    */
   public static int binarySearch(int[] vals, int val) throws Exception {
     // return 0;
-    // return interativeBinarySearch(vals, val);
+    // return iterativeBinarySearch(vals, val);
     return recursiveBinarySearch(vals, val);
   } // binarySearch
 
