@@ -53,8 +53,25 @@ public class SearchUtils {
    *   values[index] == val
    */
   static int recursiveBinarySearch(int[] vals, int val) throws Exception {
-    return 0;   // STUB
+    return recursiveHelper(vals, val, 0, vals.length - 1);
   } // recursiveBinarySearch
+
+  static int recursiveHelper(int[] vals, int val, int lb, int ub) throws Exception {
+    int midpoint = (ub - lb)/2;
+    midpoint += lb;
+    if (lb > ub){
+      throw new Exception("Not found");
+    } // if/else
+    if (vals[midpoint] == val) {
+      return midpoint;
+    } else if (vals[midpoint] < val) {
+      return recursiveHelper(vals, val, midpoint + 1, ub);
+    } else {
+      return recursiveHelper(vals, val, lb, midpoint - 1);
+    } // else/if
+  } // recursiveHelper
+
+
 
   /**
    * Search for val in a subarray of values, return the index of an 
@@ -97,7 +114,8 @@ public class SearchUtils {
    *   The predicate used to determine whether or not the value is
    *   acceptable
    * 
-   * @return the first mathcing element.
+   * @return the first mathcing    assertBinarySearchFails(new int[] { }, 0);
+ element.
    *
    * @throws Exception
    *   If no matching value is found.
@@ -115,23 +133,20 @@ public class SearchUtils {
    * Search for val in values, return the index of an instance of val.
    *
    * @param values
-   *   A sorted array of integers
-   * @param val
-   *   An integer we're searching for
-   * @return
+   *   A sorted array of intege    assertBinarySearchFails(new int[] { }, 0);
+
    *   index, an index of val (if one exists)
    * @throws Exception
    *   If there is no i s.t. values[i] == val
    * @pre
-   *   values is sorted in increasing order.  That is, values[i] <=
-   *   values[i+1] for all reasonable i.
-   * @post
+   *   values is sorted in inc    assertBinarySearchFails(new int[] { }, 0);
+
    *   values[index] == val
    */
   public static int binarySearch(int[] vals, int val) throws Exception {
-    return 0;
+    // return 0;
     // return interativeBinarySearch(vals, val);
-    // return recursiveBinarySearch(vals, val);
+    return recursiveBinarySearch(vals, val);
   } // binarySearch
 
 } // class SearchUtils
