@@ -2,11 +2,8 @@ package edu.grinnell.csc207;
 
 import java.util.Arrays;
 
-import java.util.function.Supplier;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import org.junit.jupiter.api.Test;
 
 import edu.grinnell.csc207.util.SearchUtils;
@@ -14,8 +11,8 @@ import edu.grinnell.csc207.util.SearchUtils;
 /**
  * Tests of our search methods.
  *
- * @author Your Name Here
- * @author Your Name Here
+ * @author Alyssa
+ * @author Maral
  * @author Samuel A. Rebelsky
  */
 public class TestSearch {
@@ -89,6 +86,7 @@ public class TestSearch {
   /**
    * Searching the empty array should fail.
    */
+
   @Test
   void testBinarySearchEmpty() throws Exception {
     assertBinarySearchFails(new int[] { }, 0);
@@ -117,13 +115,32 @@ public class TestSearch {
   } // testBinarySearchTwo()
 
   /**
-   * Searching with duplicates. (Credit to SD, MM, JV.)
+   * Searching with duplicates. (    assertBinarySearchFails(new int[] { }, 0);
+int[] { 1, 1, 1, 2, 2, 3 }, 3);
+  } // testBinarySearchDups()
+
+  /**
+   * Searching in a three-element array.
    */
   @Test
-  void testBinarySearchDups() throws Exception {
-    assertBinarySearchFinds(new int[] { 1, 1, 1, 2, 2, 3 }, 1);
-    assertBinarySearchFinds(new int[] { 1, 1, 1, 2, 2, 3 }, 2);
-    assertBinarySearchFinds(new int[] { 1, 1, 1, 2, 2, 3 }, 3);
-  } // testBinarySearchDups()
+  void testBinarySearchThree() throws Exception {
+    assertBinarySearchFinds(2, new int[] { 1, 2, 7, 11 }, 7);
+    assertBinarySearchFinds(2, new int[] { -1, 7, 11, 12, 575 }, 11);
+    assertBinarySearchFails(new int[] { 1, 2, 7, 11 }, 0);
+    assertBinarySearchFails(new int[] { 33, -10, 7, 11 }, 10);
+    assertBinarySearchFails(new int[] { -20, 7, 11 }, 20);
+  } // testBinarySearchTwo()
+
+  @Test
+  void testLoop() throws Exception{
+    int[] vals = new int[32];
+    for (int i=0; i<32; i++) {
+      vals[i] = 2*i;
+    }
+    for (int j=0; j<32; j++){
+      assertBinarySearchFinds(j, vals, 2*j);
+      assertBinarySearchFails(vals, (2*j)+1);
+    }
+  }
 
 } // class TestSearch
