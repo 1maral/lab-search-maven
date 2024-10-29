@@ -1,11 +1,8 @@
 package edu.grinnell.csc207.experiments;
 
 import java.io.PrintWriter;
-
 import java.util.ArrayList;
 import java.util.Arrays;
-
-import java.util.function.Predicate;
 
 import edu.grinnell.csc207.util.SearchUtils;
 
@@ -34,7 +31,24 @@ public class SearchExperiments {
                        "romeo", "sierra", "tango", "uniform",
                        "victor", "whiskey", "xray", "yankee", "zulu" };
     ArrayList<String> strings = new ArrayList<String>(Arrays.asList(tmp));
-
+    try{
+      String ex1c = SearchUtils.search(strings, (str)->str.length()<5);
+      pen.println("The first string in the list with less than five letters is " + ex1c);
+    } catch (Exception e) {
+      pen.println("There are no strings with less than five letters");
+    }
+    try {
+      String ex1g = SearchUtils.search(strings, (s) -> s.length() == 6);
+      pen.println("The first string of exactly six letters is " + ex1g);
+    } catch (Exception e) {
+      pen.println("There are no strings of exactly six letters.");
+    } // try/catch
+    try {
+      String ex1u = SearchUtils.search(strings, (s) -> s.contains("u"));
+      pen.println("The first string that contains the letter u is " + ex1u);
+    } catch (Exception e) {
+      pen.println("There are no strings that contain the letter u.");
+    } // try/catch
     pen.close();
   } // main(String[])
 } // class SearchUtils

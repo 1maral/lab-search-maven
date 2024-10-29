@@ -5,8 +5,8 @@ import java.util.function.Predicate;
 /**
  * Assorted utilities for searching structures.
  *
- * @author Your Name Here
- * @author Your Name Here
+ * @author Alyssa Ryan
+ * @author Maral Bat-Erdene
  * @author Samuel A. Rebelsky (starter code)
  */
 public class SearchUtils {
@@ -102,9 +102,13 @@ public class SearchUtils {
    * @throws Exception
    *   If no matching value is found.
    */
-  public static <T> T search(Iterable<T> values, Predicate<? super T> pred) 
-      throws Exception {
-    throw new Exception("Unimplemented");       // STUB
+  public static <T> T search(Iterable<T> values, Predicate<? super T> pred) throws Exception{
+    for(T i : values){
+      if(pred.test(i)){
+        return i;
+      }
+    }
+    throw new Exception();
   } // search(Iterable<T>, Predicate<? super T>)
 
   /**
